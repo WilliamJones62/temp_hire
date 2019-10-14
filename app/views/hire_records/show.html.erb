@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<h1>Showing Hours Record</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>DC</th>
+      <th>Agency</th>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @hire_record.dc  %> </td>
+      <td> <%= @hire_record.agency  %> </td>
+      <td> <%= @hire_record.emp_name  %> </td>
+      <td> <%= display_date(@hire_record.start_date) %> </td>
+      <td> <%= display_date(@hire_record.end_date) %> </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Rate</th>
+      <th>Hours</th>
+      <th>Overtime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @hire_record.emp_role  %> </td>
+      <td> <%= @hire_record.rate  %> </td>
+      <td> <%= @hire_record.hours  %> </td>
+      <td> <%= yes_boolean(@hire_record.overtime) %> </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_hire_record_path(@hire_record) %>
+<%= link_to 'Back', hire_records_path %>

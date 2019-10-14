@@ -1,0 +1,55 @@
+<%= form_with(model: hire_record, local: true) do |form| %>
+  <% if hire_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hire_record.errors.count, "error") %> prohibited this hours record from being saved:</h2>
+
+      <ul>
+      <% hire_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th> <%= form.label :dc, "DC" %> </th>
+        <th> <%= form.label :agency  %> </th>
+        <th> <%= form.label :emp_name, "Name"  %> </th>
+        <th> <%= form.label :start_date %> </th>
+        <th> <%= form.label :end_date %> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= form.select :dc, @dc, {}, {:value => params[:dc], id: :hire_record_dc} %> </td>
+        <td> <%= form.text_field :agency  %> </td>
+        <td> <%= form.text_field :emp_name  %> </td>
+        <td> <%= form.date_field :start_date  %> </td>
+        <td> <%= form.date_field :end_date  %> </td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th> <%= form.label :emp_role, "Role" %> </th>
+        <th> <%= form.label :rate %> </th>
+        <th> <%= form.label :hours %> </th>
+        <th> <%= form.label :overtime %> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= form.select :emp_role, @emp_role, {}, {:value => params[:emp_role], id: :hire_record_emp_role} %> </td>
+        <td> <%= form.number_field :rate, id: :hire_record_rate, min: 0, step: 0.01 %> </td>
+        <td> <%= form.number_field :hours, id: :hire_record_hours, min: 0, step: 0.01 %> </td>
+        <td> <%= form.check_box :overtime, id: :hire_record_overtime %> </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <%= form.submit frm_action %>
+  </div>
+<% end %>

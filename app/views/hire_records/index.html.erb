@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hours Records</h1>
+
+<table id="normal_dt"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>DC</th>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Role</th>
+      <th>Rate</th>
+      <th>Hours</th>
+      <th>Overtime</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hire_records.each do |hire_record| %>
+      <tr>
+        <td><%= hire_record.dc %></td>
+        <td><%= hire_record.emp_name %></td>
+        <td><%= display_date(hire_record.start_date) %></td>
+        <td><%= display_date(hire_record.end_date) %></td>
+        <td><%= hire_record.emp_role %></td>
+        <td><%= hire_record.rate %></td>
+        <td><%= hire_record.hours %></td>
+        <td> <%= yes_boolean(hire_record.overtime) %> </td>
+        <td><%= link_to 'Show', hire_record %></td>
+        <td><%= link_to 'Edit', edit_hire_record_path(hire_record) %></td>
+        <td><%= link_to 'Delete', hire_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hours Record', new_hire_record_path %>
